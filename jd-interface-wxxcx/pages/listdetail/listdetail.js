@@ -1,66 +1,51 @@
-// pages/listdetail/listdetail.js
+import {
+  config
+} from './../../utils/baseRequestUrl.js'
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    baitiao: [],
+    partData: {}
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad: function(e) {
+    this._getDetailData(e)
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  _getDetailData(e) {
+    wx.showLoading({
+      title: '加载中'
+    })
+    const id = e.id
+    wx.request({
+      url: config.api_base_url + 'api/profiles/productionDetail',
+      success: ((res) => {
+        if (res.statusCode === 200 && res.errMsg === 'request:ok' && res.data.length) {
+          res.data.forEach((item) => {
+            if (item.partData.id === id) {
+              this.setData({
+                baitiao: item.baitiao,
+                partData: item.partData
+              })
+              console.log(this.data.baitiao)
+              console.log(this.data.partData)
+              return
+            }
+          })
+        } else {
+          this.setData({
+            baitiao: [],
+            partData: []
+          })
+        }
+      }),
+      fail: ((err) => {
+        console.log(err)
+        this.setData({
+          baitiao: [],
+          partData: []
+        })
+      }),
+      complete: (() => {
+        wx.hideLoading()
+      })
+    })
   }
 })

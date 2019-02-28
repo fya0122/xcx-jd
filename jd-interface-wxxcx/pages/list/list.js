@@ -16,9 +16,9 @@ Page({
         title: text
       })
     }
-    this._getDetailData()
+    this._getListData()
   },
-  _getDetailData() {
+  _getListData() {
     // wx.showLoading({
     //   title: '加载中'
     // })
@@ -55,7 +55,7 @@ Page({
       flag: true,
       page: 1
     })
-    this._getDetailData()
+    this._getListData()
   },
   // 触底以后触发的函数
   onReachBottom() {
@@ -95,5 +95,11 @@ Page({
         title: '已经是最后一页了'
       })
     }
+  },
+  navigateToListDetail(e) {
+    const id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `../listdetail/listdetail?id=${id}`
+    })
   }
 })

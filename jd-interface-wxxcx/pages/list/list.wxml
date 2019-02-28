@@ -1,6 +1,6 @@
 <view class='prolist'>
   <block wx:for="{{ prolist }}" wx:key="{{ item.id }}">
-    <view class='prolist_item'>
+    <view class='prolist_item' data-id='{{ item.id }}' bindtap='navigateToListDetail'>
       <view class='prolist_cover'>
         <image src='{{ item.cover }}' />
       </view>
