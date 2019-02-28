@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/category/category",
+    "pages/home/home",
+    "pages/cart/cart",
+    "pages/me/me",
+    "pages/list/list",
+    "pages/listdetail/listdetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fbf9fe",
+    "navigationBarTitleText": "致敬米斯特吴·京东",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#959394",
+    "selectedColor": "#e93b3d",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "image/home.png",
+        "selectedIconPath": "image/home-hl.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "image/category.png",
+        "selectedIconPath": "image/category-hl.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "image/cart.png",
+        "selectedIconPath": "image/cart-hl.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "image/me.png",
+        "selectedIconPath": "image/me-hl.png"
+      }
+    ]
+  }
+}

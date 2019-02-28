@@ -1,0 +1,175 @@
+page {
+  background: #f7f7f7;
+  height: 100%;
+}
+
+.container {
+  box-sizing: border-box;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  height: 60rpx;
+  align-items: center;
+  background: #f7f7f7;
+}
+
+.search .scan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 10%;
+}
+
+.search .search-input {
+  padding: 5rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 80%;
+  border-radius: 10rpx;
+  align-items: center;
+}
+
+.search-input input {
+  /* padding: 10rpx 30rpx; */
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  font-size: 28rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.search-text {
+  top: 0;
+  padding: 0;
+  left: 0;
+  right: 0;
+}
+
+.widgets-img {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+swiper {
+  width: 100%;
+  height: 325rpx;
+}
+
+.slide-image {
+  width: 100%;
+  height: 325rpx;
+}
+
+.big-logo {
+  box-sizing: border-box;
+  padding-top: 10rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: #fff;
+}
+
+.logoinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.logotext {
+  color: #aaa;
+  font-size: 22rpx;
+  margin-top: 10rpx;
+}
+
+.page-margin {
+  box-sizing: border-box;
+  padding: 20rpx;
+  margin-top: 20rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.theme_img {
+  width: 180rpx;
+  height: 40rpx;
+}
+
+.theme_more {
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+}
+
+.theme_more text {
+  margin-right: 2px;
+  font-size: 22rpx;
+  color: #aaa;
+}
+
+.theme_more image {
+  width: 22rpx;
+  height: 22rpx;
+}
+
+.page-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.theme_scroll {
+  width: 100%;
+  margin-top: 10rpx;
+  white-space: nowrap;
+}
+
+.page-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+}
+
+.page-column image {
+  width: 170rpx;
+  height: 170rpx;
+}
+
+.page-column text {
+  font-size: 32rpx;
+  color: #f00;
+  margin-top: 10rpx;
+}
+
+.page-row .page_img {
+  min-width: 240rpx;
+  max-width: 375rpx;
+  min-height: 202rpx;
+  max-height: 292rpx;
+}
+
+/* scroll-view 不显示滚动条 */
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

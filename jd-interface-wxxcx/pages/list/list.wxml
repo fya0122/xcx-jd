@@ -1,0 +1,21 @@
+<view class='prolist'>
+  <block wx:for="{{ prolist }}" wx:key="{{ item.id }}">
+    <view class='prolist_item'>
+      <view class='prolist_cover'>
+        <image src='{{ item.cover }}' />
+      </view>
+      <view class='prolist_info'>
+        <view class='prolist_title'>
+          <text>{{ item.title }}</text>
+        </view>
+        <view class='prolist_price'>
+          <text>{{ item.price }}</text>
+        </view>
+        <view class='prolist_other'>
+          <text class='prolist_conmment'>{{ item.conmment }}</text>
+          <text class='prolist_rate'>好评率{{ item.rate }}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
