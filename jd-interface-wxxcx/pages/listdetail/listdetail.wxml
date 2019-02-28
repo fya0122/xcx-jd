@@ -1,2 +1,29 @@
-<!--pages/listdetail/listdetail.wxml-->
-<text>pages/listdetail/listdetail.wxml</text>
+<view class='detail'>
+  <!-- 图片轮播 -->
+  <view class='mod_slider'>
+    <swiper style='width: 100%;height: 820rpx;' indicator-active-color='#e93b3d' indicator-color='rgba(255, 255, 255, 0.6)' indicator-dots='{{ true }}'>
+      <block wx:for='{{ partData.loopImgUrl }}' wx:key='{{ item }}'>
+        <swiper-item>
+          <image src="{{ item }}" class="swiper-item" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!-- 商品信息 -->
+  <view class='buy_area'>
+    <view class='textWrap'>
+      <text>{{ partData.title }}</text>
+    </view>
+    <view class='priceWrap'>
+      <text>￥{{ partData.price }}</text>
+    </view>
+
+    <!-- 支付 -->
+    <v-infocell title="支付" bindpopview='popview' desc="【白条支付】首单享立减优惠"/>
+    <!-- 已选 -->
+    <v-infocell title="已选" bindpopview='buypopview' desc="{{ partData.count }}件"/>
+  </view>
+
+
+</view>

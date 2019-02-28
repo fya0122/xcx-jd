@@ -47,5 +47,13 @@ Page({
         wx.hideLoading()
       })
     })
+  },
+  // 上面的那个点
+  popview() {
+    console.log('hello阿')
+  },
+  // 下面的那个点
+  buypopview() {
+    console.log('哈哈哈哈')
   }
 })
