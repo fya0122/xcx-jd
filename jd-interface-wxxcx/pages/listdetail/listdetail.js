@@ -4,7 +4,8 @@ import {
 Page({
   data: {
     baitiao: [],
-    partData: {}
+    partData: {},
+    isShowBaiTiao: false
   },
   onLoad: function(e) {
     this._getDetailData(e)
@@ -50,7 +51,9 @@ Page({
   },
   // 上面的那个点
   popview() {
-    console.log('hello阿')
+    this.setData({
+      isShowBaiTiao: true
+    })
   },
   // 下面的那个点
   buypopview() {

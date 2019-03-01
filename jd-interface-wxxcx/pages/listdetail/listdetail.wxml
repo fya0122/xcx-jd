@@ -20,10 +20,10 @@
     </view>
 
     <!-- 支付 -->
-    <v-infocell title="支付" bindpopview='popview' desc="【白条支付】首单享立减优惠"/>
+    <v-infocell title="支付" bindpopview='popview' desc="【白条支付】首单享立减优惠" />
     <!-- 已选 -->
-    <v-infocell title="已选" bindpopview='buypopview' desc="{{ partData.count }}件"/>
+    <v-infocell title="已选" bindpopview='buypopview' desc="{{ partData.count }}件" />
   </view>
 
-
+  <v-iou baitiao='{{ baitiao }}' isShowBaiTiao='{{ isShowBaiTiao }}'/>
 </view>

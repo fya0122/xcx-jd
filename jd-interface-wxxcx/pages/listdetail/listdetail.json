@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "v-infocell": "../../components/infocell/infocell"
+    "v-infocell": "../../components/infocell/infocell",
+    "v-iou": "../../components/iou/iou"
   }
 }
