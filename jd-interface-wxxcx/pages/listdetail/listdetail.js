@@ -5,7 +5,11 @@ Page({
   data: {
     baitiao: [],
     partData: {},
-    isShowBaiTiao: false
+    // 第一个子组件
+    isShowBaiTiao: false,
+    zhifuDesc: '',
+    // 第二个子组件
+    isShowBuy: true
   },
   onLoad: function(e) {
     this._getDetailData(e)
@@ -24,9 +28,11 @@ Page({
               this.setData({
                 baitiao: item.baitiao,
                 partData: item.partData
+              }, () => {
+                this.setData({
+                  zhifuDesc: this.data.baitiao[0].desc
+                })
               })
-              console.log(this.data.baitiao)
-              console.log(this.data.partData)
               return
             }
           })
@@ -57,6 +63,31 @@ Page({
   },
   // 下面的那个点
   buypopview() {
-    console.log('哈哈哈哈')
+
+  },
+  // 子组件传递上来的，让白条消失
+  hidebaitiaoview(e) {
+    const isShowBaiTiao = e.detail.isShowBaiTiao
+    this.setData({
+      isShowBaiTiao
+    })
+  },
+  // 点击立即打白条以后的操作
+  ljdbt(e) {
+    const isShowBaiTiao = e.detail.isShowBaiTiao
+    const baitiao = e.detail.baitiao
+    // let mydesc = ''
+    // for (const item of baitiao) {
+    //   if (item.select === true) {
+    //     mydesc = item.desc
+    //   }
+    // }
+    const currobj = baitiao.filter((item) => {
+      return item.select === true
+    })
+    this.setData({
+      isShowBaiTiao: false,
+      zhifuDesc: currobj[0].desc
+    })
   }
 })

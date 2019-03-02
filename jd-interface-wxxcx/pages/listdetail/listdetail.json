@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "v-infocell": "../../components/infocell/infocell",
-    "v-iou": "../../components/iou/iou"
+    "v-iou": "../../components/iou/iou",
+    "v-buy": "../../components/buy/buy"
   }
 }

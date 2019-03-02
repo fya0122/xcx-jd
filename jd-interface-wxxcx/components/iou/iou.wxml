@@ -1,19 +1,19 @@
-<view class='popupDom' wx:if='{{ isShowBaiTiao }}'>
+<view class='popupDom' data-target='my' catchtap='hideBaitiaoView' wx:if='{{ isShowBaiTiao }}'>
   <view class='pop_main'>
 
 
     <!-- 头部 -->
     <view class='pop_header'>
       打白条购买
-      <text>×</text>
+      <text data-target='my' catchtap='hideBaitiaoView'>×</text>
     </view>
 
 
 
     <!-- 中间 -->
     <view class='pop_body'>
-      <block wx:for='{{ baitiao }}' wx:key="*this">
-        <view class='section_item'>
+      <block wx:for='{{ baitiao }}' wx:key="{{ item.desc }}">
+        <view class='section_item' data-index='{{ index }}' catchtap='selectItem'>
           <image wx:if='{{ item.select }}' src='../../image/selected.png'></image>
           <image wx:else src='../../image/unselect.png'></image>
           <view class='detail'>
@@ -29,7 +29,7 @@
 
     <!-- 尾部 -->
     <view class='pop_btn'>
-      <button>立即打白条</button>
+      <button catchtap='ljdbt'>立即打白条</button>
     </view>
 
 
