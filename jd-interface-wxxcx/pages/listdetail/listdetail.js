@@ -9,7 +9,7 @@ Page({
     isShowBaiTiao: false,
     zhifuDesc: '',
     // 第二个子组件
-    isShowBuy: true
+    isShowBuy: false
   },
   onLoad: function(e) {
     this._getDetailData(e)
@@ -61,10 +61,6 @@ Page({
       isShowBaiTiao: true
     })
   },
-  // 下面的那个点
-  buypopview() {
-
-  },
   // 子组件传递上来的，让白条消失
   hidebaitiaoview(e) {
     const isShowBaiTiao = e.detail.isShowBaiTiao
@@ -89,5 +85,34 @@ Page({
       isShowBaiTiao: false,
       zhifuDesc: currobj[0].desc
     })
+  },
+  // 下面的那个点
+  buypopview() {
+    this.setData({
+      isShowBuy: true
+    })
+  },
+  // 消失
+  hideviewbuy(e) {
+    const currisShowBuy = e.detail.isShowBuy
+    this.setData({
+      isShowBuy: currisShowBuy
+    })
+  },
+  // amount的input改变的时候，传递了两层由下往上
+  changeitemcount(e) {
+    const count = e.detail.endcount
+    const id = e.detail.id
+    const partData = this.data.partData
+    if (partData.id === id) {
+      partData.count = count
+    }
+    this.setData({
+      partData: partData
+    })
+  },
+  // 加入购物车
+  addcart() {
+    console.log('我是加入购物车')
   }
 })

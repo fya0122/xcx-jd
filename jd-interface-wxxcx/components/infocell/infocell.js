@@ -12,7 +12,6 @@ Component({
   data: {},
   methods: {
     popView() {
-      console.log(123)
       this.triggerEvent('popview')
     }
   }

@@ -1,23 +1,24 @@
-<view class='popupDom' wx:if='{{ isShowBuy }}'>
+<view class='popupDom' data-target='my' catchtap='hideViewBuy' wx:if='{{ isShowBuy }}'>
   <view class='pop_main'>
     <view class='buy_header'>
       <view class='head_img'>
-        <image src='{{ partData.loopImgUrl[0] }}'></image>
+        <image src='{{ parData.loopImgUrl[0] }}'></image>
       </view>
       <view class='info'>
-        <text class='price'>¥{{ partData.price }}</text>
-        <text class='selcount'>已选 {{ partData.count }}件</text>
+        <text class='price'>¥{{ parData.price }}</text>
+        <text class='selcount'>已选 {{ parData.count }}件</text>
       </view>
-      <text>x</text>
+      <text data-target='my' catchtap='hideViewBuy'>x</text>
     </view>
     <view class='buy_body'>
       <text>数量</text>
       <view class='amount'>
-        <amount count='{{ partData.count }}'></amount>
+        <!-- {{ parData.count }} -->
+        <v-amount bindgetcount='getcount' count='{{ parData.count }}' />
       </view>
     </view>
     <view class='pop_btn'>
-      <button>加入购物车</button>
+      <button catchtap='buy'>加入购物车</button>
     </view>
   </view>
 </view>

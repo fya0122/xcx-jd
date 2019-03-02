@@ -25,6 +25,20 @@
     <v-infocell title="已选" bindpopview='buypopview' desc="{{ partData.count }}件" />
   </view>
 
-  <v-iou bindljdbt='ljdbt' bindhidebaitiaoview='hidebaitiaoview' baitiao='{{ baitiao }}' isShowBaiTiao='{{ isShowBaiTiao }}'/>
-  <v-buy isShowBuy='{{ isShowBuy }}'/>
+
+  <view class='btn_bar'>
+    <view class='icon_cart'>
+      <image src='/image/cart.png' />
+      <text>购物车</text>
+    </view>
+    <view class='cart_btn'>
+      <!-- 和下面的addcart是一个道理的 -->
+      <button bindtap='addcart'>加入购物车</button>
+    </view>
+  </view>
+
+
+
+  <v-iou bindljdbt='ljdbt' bindhidebaitiaoview='hidebaitiaoview' baitiao='{{ baitiao }}' isShowBaiTiao='{{ isShowBaiTiao }}' />
+  <v-buy bindgotobuy='addcart' bindchangeitemcount='changeitemcount' bindhideviewbuy='hideviewbuy' parData='{{ partData }}' isShowBuy='{{ isShowBuy }}' />
 </view>
