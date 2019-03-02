@@ -32,6 +32,19 @@ Page({
                 this.setData({
                   zhifuDesc: this.data.baitiao[0].desc
                 })
+                // let cartListInfo = wx.getStorageSync('cartListInfo')
+                // if (cartListInfo) {
+                //   cartListInfo = JSON.parse(cartListInfo)
+                //   const partData = this.data.partData
+                //   for (const item of cartListInfo) {
+                //     if (item.id === partData.id) {
+                //       partData.count = item.count
+                //     }
+                //   }
+                //   this.setData({
+                //     partData: partData
+                //   })
+                // }
               })
               return
             }
@@ -113,6 +126,36 @@ Page({
   },
   // 加入购物车
   addcart() {
-    console.log('我是加入购物车')
-  }
+    // let partData = this.data.partData
+    // let cartListInfo = wx.getStorageSync('cartListInfo')
+    // if (cartListInfo) {
+    //   cartListInfo = JSON.parse(cartListInfo)
+    //   console.log('当前购物车.')
+    //   console.log(cartListInfo)
+    //   let flag = this.checkObjOrArr(cartListInfo, partData)
+    //   if (flag) {
+    //     for (const item of cartListInfo) {
+    //       if (item.id === partData.id) {
+    //         item.count = partData.count
+    //       }
+    //     }
+    //   } else {
+    //     cartListInfo.push(partData)
+    //   }
+    //   wx.setStorageSync('cartListInfo', JSON.stringify(cartListInfo))
+    // } else {
+    //   let arr = []
+    //   arr.push(partData)
+    //   wx.setStorageSync('cartListInfo', JSON.stringify(arr))
+    // }
+  },
+  // 检测是否存在
+  // checkObjOrArr(arr, obj) {
+  //   for (const item of arr) {
+  //     if (item.id === obj.id) {
+  //       return true
+  //     }
+  //   }
+  //   return false
+  // }
 })
