@@ -126,36 +126,47 @@ Page({
   },
   // 加入购物车
   addcart() {
-    // let partData = this.data.partData
-    // let cartListInfo = wx.getStorageSync('cartListInfo')
-    // if (cartListInfo) {
-    //   cartListInfo = JSON.parse(cartListInfo)
-    //   console.log('当前购物车.')
-    //   console.log(cartListInfo)
-    //   let flag = this.checkObjOrArr(cartListInfo, partData)
-    //   if (flag) {
-    //     for (const item of cartListInfo) {
-    //       if (item.id === partData.id) {
-    //         item.count = partData.count
-    //       }
-    //     }
-    //   } else {
-    //     cartListInfo.push(partData)
-    //   }
-    //   wx.setStorageSync('cartListInfo', JSON.stringify(cartListInfo))
-    // } else {
-    //   let arr = []
-    //   arr.push(partData)
-    //   wx.setStorageSync('cartListInfo', JSON.stringify(arr))
-    // }
+    let cartListInfo = wx.getStorageSync('cartListInfo')
+    console.log(cartListInfo)
+    if (cartListInfo) {
+      console.log('有购物车，此刻你得判断当前对象是否存在这个购物车呢')
+      cartListInfo = JSON.parse(cartListInfo)
+      const partData = this.data.partData
+
+      // 是否存在？
+      const flag = this.isExit(cartListInfo, partData)
+      if (flag) {
+        for (const item of cartListInfo) {
+          if (item.id === partData.id) {
+            item.buyTotal += partData.count
+          }
+        }
+      } else {
+        partData.buyTotal = partData.count
+        cartListInfo.push(partData)
+      }
+      wx.setStorageSync('cartListInfo', JSON.stringify(cartListInfo))
+
+
+    } else {
+      console.log('没购物车')
+      wx.removeStorageSync('cartListInfo')
+
+      let arr = []
+      const partData = this.data.partData
+      partData.buyTotal = partData.count
+      arr.push(partData)
+      wx.setStorageSync('cartListInfo', JSON.stringify(arr))
+    }
   },
-  // 检测是否存在
-  // checkObjOrArr(arr, obj) {
-  //   for (const item of arr) {
-  //     if (item.id === obj.id) {
-  //       return true
-  //     }
-  //   }
-  //   return false
-  // }
+  isExit(arr, obj) {
+    if (Array.isArray(arr)) {
+      for (const item of arr) {
+        if (item.id === obj.id) {
+          return true
+        }
+      }
+    }
+    return false
+  }
 })
