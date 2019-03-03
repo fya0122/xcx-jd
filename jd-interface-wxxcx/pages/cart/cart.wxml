@@ -4,6 +4,26 @@
     <text class='empty_txt'>购物车空空如也，去逛逛吧~</text>
   </view>
   <view wx:else class='section'>
-    这里显示你加入购物车里面的信息
+    <block wx:for='{{ cartList }}' wx:key='{{ item.id }}'>
+      <view class='good_list' data-id='{{ item.id }}' bindtap='switchGoodsDetail'>
+        <view class='content'>
+          <view class='select_icon'>
+            <image class='icon' src='/image/unselect.png' />
+          </view>
+          <view class='goods'>
+            <image class='good_img' src='{{ item.loopImgUrl[0] }}' />
+            <view class='good_info'>
+              <view class='good_title'>
+                <text>{{ item.title }}</text>
+              </view>
+              <view class='good_price'>
+                <text class='price'>{{ item.price }}</text>
+                <v-amount data-id='{{ item.id }}' bindgetcount='getcount' count='{{ item.buyTotal }}'/>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
   </view>
 </view>

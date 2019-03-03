@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "v-amount": "../../components/amount/amount"
+  },
   "navigationBarTitleText": "购物车"
 }
