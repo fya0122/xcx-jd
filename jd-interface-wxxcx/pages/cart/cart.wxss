@@ -130,6 +130,8 @@
   color: #999;
   box-sizing: border-box;
   padding-left: 20rpx;
+  display: flex;
+  align-items: center;
 }
 
 .select_all .icon {

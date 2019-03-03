@@ -7,8 +7,9 @@
     <block wx:for='{{ cartList }}' wx:key='{{ item.id }}'>
       <view class='good_list' data-id='{{ item.id }}' bindtap='switchGoodsDetail'>
         <view class='content'>
-          <view class='select_icon'>
-            <image class='icon' src='/image/unselect.png' />
+          <view class='select_icon' data-id='{{ item.id }}' catchtap='selectGoods'>
+            <image wx:if='{{ item.select === true }}' src='/image/selected.png' />
+            <image wx:if='{{ item.select === false }}' class='icon' src='/image/unselect.png' />
           </view>
           <view class='goods'>
             <image class='good_img' src='{{ item.loopImgUrl[0] }}' />
@@ -18,12 +19,26 @@
               </view>
               <view class='good_price'>
                 <text class='price'>{{ item.price }}</text>
-                <v-amount data-id='{{ item.id }}' bindgetcount='getcount' count='{{ item.buyTotal }}'/>
+                <v-amount data-id='{{ item.id }}' bindgetcount='getcount' count='{{ item.buyTotal }}' />
               </view>
             </view>
           </view>
         </view>
       </view>
     </block>
+    <view class='fixBar'>
+      <view class='select_all' bindtap='setAllStatus'>
+        <image wx:if='{{ selectAll }}' src='/image/selected.png' class='icon' />
+        <image wx:else class='icon' src='/image/unselect.png' />
+        <text>全选</text>
+      </view>
+      <view class='total'>
+        <text>合计：</text>
+        <text class='money'>￥{{ totalMoney }}</text>
+      </view>
+      <view class='btn_amount'>
+        <button>去结算( {{ totalCount }} )</button>
+      </view>
+    </view>
   </view>
 </view>

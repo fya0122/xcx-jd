@@ -146,6 +146,7 @@ Page({
         }
       } else {
         partData.buyTotal = partData.count
+        partData.select = false
         cartListInfo.push(partData)
       }
       wx.setStorageSync('cartListInfo', JSON.stringify(cartListInfo))
@@ -158,6 +159,7 @@ Page({
       let arr = []
       const partData = this.data.partData
       partData.buyTotal = partData.count
+      partData.select = false
       arr.push(partData)
       wx.setStorageSync('cartListInfo', JSON.stringify(arr))
     }
