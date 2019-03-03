@@ -9,7 +9,9 @@ Page({
     isShowBaiTiao: false,
     zhifuDesc: '',
     // 第二个子组件
-    isShowBuy: false
+    isShowBuy: false,
+    // 左下角图标
+    badgeCount: 0
   },
   onLoad: function(e) {
     this._getDetailData(e)
@@ -32,19 +34,20 @@ Page({
                 this.setData({
                   zhifuDesc: this.data.baitiao[0].desc
                 })
-                // let cartListInfo = wx.getStorageSync('cartListInfo')
-                // if (cartListInfo) {
-                //   cartListInfo = JSON.parse(cartListInfo)
-                //   const partData = this.data.partData
-                //   for (const item of cartListInfo) {
-                //     if (item.id === partData.id) {
-                //       partData.count = item.count
-                //     }
-                //   }
-                //   this.setData({
-                //     partData: partData
-                //   })
-                // }
+                let cartListInfo = wx.getStorageSync('cartListInfo')
+                if (cartListInfo) {
+                  let badgeCount = 0
+                  cartListInfo = JSON.parse(cartListInfo)
+                  const partData = this.data.partData
+                  for (const item of cartListInfo) {
+                    if (item.id === partData.id) {
+                      badgeCount = item.buyTotal
+                    }
+                  }
+                  this.setData({
+                    badgeCount: badgeCount
+                  })
+                }
               })
               return
             }
@@ -158,7 +161,26 @@ Page({
       arr.push(partData)
       wx.setStorageSync('cartListInfo', JSON.stringify(arr))
     }
+    wx.showToast({
+      title: '加入购物车成功',
+      duration: 1500
+    })
+    let cartListInfo_temp = wx.getStorageSync('cartListInfo')
+    if (cartListInfo_temp) {
+      let badgeCount = 0
+      cartListInfo_temp = JSON.parse(cartListInfo_temp)
+      const partData_temp = this.data.partData
+      for (const item of cartListInfo_temp) {
+        if (item.id === partData_temp.id) {
+          badgeCount = item.buyTotal
+        }
+      }
+      this.setData({
+        badgeCount: badgeCount
+      })
+    }
   },
+  // 检查是否存在
   isExit(arr, obj) {
     if (Array.isArray(arr)) {
       for (const item of arr) {
@@ -168,5 +190,11 @@ Page({
       }
     }
     return false
+  },
+  // 购物车
+  gotoCartPage() {
+    wx.switchTab({
+      url: '../cart/cart',
+    })
   }
 })

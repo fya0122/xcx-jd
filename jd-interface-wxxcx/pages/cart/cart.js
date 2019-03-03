@@ -1,66 +1,29 @@
-// pages/cart/cart.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    cartList: []
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    this._getStorage()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  _getStorage() {
+    let cartListInfo = wx.getStorageSync('cartListInfo')
+    if (cartListInfo) {
+      cartListInfo = JSON.parse(cartListInfo)
+      this.setData({
+        cartList: cartListInfo
+      }, () => {
+        if (this.data.cartList.length > 0) {
+          // 设置购物车图标
+          wx.setTabBarBadge({
+            index: 2,
+            text: String(this.data.cartList.length),
+          })
+        } else {
+          wx.removeTabBarBadge({
+            index: 2
+          })
+        }
+      })
+    }
   }
 })
