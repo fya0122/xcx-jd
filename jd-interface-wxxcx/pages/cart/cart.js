@@ -17,9 +17,13 @@ Page({
     let cartListInfo = wx.getStorageSync('cartListInfo')
     if (cartListInfo) {
       cartListInfo = JSON.parse(cartListInfo)
+      cartListInfo.forEach((item) => {
+        item.isTouchMove = true // 是否滑动，肯定是false的，当为true的时候，显示另一个样式呢
+      })
       this.setData({
         cartList: cartListInfo
       }, () => {
+        console.log(this.data.cartList)
         // 设置图标
         this._setBadgeCount(this.data.cartList)
         // 计算价格和数量

@@ -5,7 +5,7 @@
   </view>
   <view wx:else class='section'>
     <block wx:for='{{ cartList }}' wx:key='{{ item.id }}'>
-      <view class='good_list' data-id='{{ item.id }}' bindtap='switchGoodsDetail'>
+      <view class='good_list {{ item.isTouchMove === true ? "touch-move-active" : ""}}' data-id='{{ item.id }}' bindtap='switchGoodsDetail'>
         <view class='content'>
           <view class='select_icon' data-id='{{ item.id }}' catchtap='selectGoods'>
             <image wx:if='{{ item.select === true }}' src='/image/selected.png' />
@@ -24,6 +24,8 @@
             </view>
           </view>
         </view>
+        <!-- 删除 -->
+        <view class='del'>删除</view>
       </view>
     </block>
     <view class='fixBar'>
